@@ -4,6 +4,7 @@ from typing import List, Optional
 import unittest
 from unittest import mock
 from unittest.mock import patch
+from unittest import TestCase
 
 import io
 
@@ -77,11 +78,85 @@ class Test_tower_puzzle(unittest.TestCase):
         test_game = Game()
         
         self.assertEqual(test_game.moves(), 0)
+    
+    '''
 
-    def test_game_choose_disk(self):
+    
+    @patch('testProject.Game.which_disk', return_value="3")
+    def test_game_pick_disk(self, input):
         test_game = Game()
 
-        self.assertEquals(test_game.which_disk)
+    
+    def test_game_whick_disk(self):
+        
+        original_input = mock.builtins.input
+        mock.builtins.input = lambda _: '3'
+
+        test_game = Game()
+        input_disk = test_game.which_disk()
+        self.assertEqual(input_disk, 3)
+
+        mock.builtins.input = original_input
+
+    '''
+    @patch('builtins.input', lambda _: '3')
+    def test_game_whick_disk(self):
+        
+        test_game = Game()
+
+        input_disk = test_game.which_disk()
+        assert input_disk == 3
+    
+
+    def test_game_pick_disk_is_below_another_one(self):
+        
+        original_input = mock.builtins.input
+        mock.builtins.input = lambda _: '15'
+
+        test_game = Game()
+        disk_chosen = test_game.pick_disk()
+
+        self.assertIsNone(disk_chosen)
+
+        mock.builtins.input = original_input
+
+
+    def test_game_pick_disk_is_valid(self):
+    
+        original_input = mock.builtins.input
+        mock.builtins.input = lambda _: '3'
+
+        test_game = Game()
+        disk_chosen = test_game.pick_disk()
+
+        self.assertIsNotNone(disk_chosen)
+
+        mock.builtins.input = original_input
+
+    def test_game_which_tower_invalid_option(self):
+
+        original_input = mock.builtins.input
+        mock.builtins.input = lambda _: '24'
+
+        test_game = Game()
+        input_tower = test_game.which_tower()
+
+        self.assertIsNone(input_tower)
+    
+        mock.builtins.input = original_input
+
+
+    def test_game_which_tower_valid_option(self):
+
+        original_input = mock.builtins.input
+        mock.builtins.input = lambda _: '1'
+
+        test_game = Game()
+        input_tower = test_game.which_tower()
+
+        self.assertIsNotNone(input_tower)
+    
+        mock.builtins.input = original_input
     
 
 """ source code for the puzzle"""
