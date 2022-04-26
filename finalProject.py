@@ -2,6 +2,31 @@ import random
 from typing import List
 
 
+def print_instructions():
+    ans = input("THE INSTRUCTIONS (Y/N)? ")
+
+    if ans in "yY":
+        print("THE GAME OF BOWLING TAKES MIND AND SKILL. DURING THE GAME")
+        print("THE COMPUTER WILL KEEP SCORE. YOU MAY COMPETE WITH")
+        print("OTHER PLAYERS[UP TO FOUR]. YOU WILL BE PLAYING TEN FRAMES.")
+        print("ON THE PIN DIAGRAM 'O' MEANS THE PIN IS DOWN...'+' MEANS THE")
+        print("PIN IS STANDING. AFTER THE GAME THE COMPUTER WILL SHOW YOUR")
+        print("SCORES.")
+    
+    elif ans not in "yYnN":
+        print("invalid Option. Please choose an option.")
+        print_instructions()
+        
+
+def print_intro():
+    print(centre_text("Bowl", 80))
+    print(centre_text("CREATIVE COMPUTING MORRISTOWN, NEW JERSEY", 80))
+    print()
+    print("WELCOME TO THE ALLEY.")
+    print("BRING YOUR FRIENDS.")
+    print("OKAY LET'S FIRST GET ACQUAINTED.")
+
+
 def simulate_roll(pins: List[int]) -> None:
     for _ in range(20):
         x = random.randint(0, 14)
@@ -94,22 +119,12 @@ def centre_text(text: str, width: int) -> str:
 
 
 def main() -> None:
-    print(centre_text("Bowl", 80))
-    print(centre_text("CREATIVE COMPUTING MORRISTOWN, NEW JERSEY", 80))
-    print()
-    print("WELCOME TO THE ALLEY.")
-    print("BRING YOUR FRIENDS.")
-    print("OKAY LET'S FIRST GET ACQUAINTED.")
+    print_intro()
 
     while True:
         print()
-        if input("THE INSTRUCTIONS (Y/N)? ") in "yY":
-            print("THE GAME OF BOWLING TAKES MIND AND SKILL. DURING THE GAME")
-            print("THE COMPUTER WILL KEEP SCORE. YOU MAY COMPETE WITH")
-            print("OTHER PLAYERS[UP TO FOUR]. YOU WILL BE PLAYING TEN FRAMES.")
-            print("ON THE PIN DIAGRAM 'O' MEANS THE PIN IS DOWN...'+' MEANS THE")
-            print("PIN IS STANDING. AFTER THE GAME THE COMPUTER WILL SHOW YOUR")
-            print("SCORES.")
+        
+        print_instructions()
 
         total_players = int(input("FIRST OF ALL...HOW MANY ARE PLAYING? "))
         player_names = []
