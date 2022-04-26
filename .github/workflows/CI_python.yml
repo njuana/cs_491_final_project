@@ -41,6 +41,6 @@ jobs:
       uses: mr-smithers-excellent/docker-build-push@v4
       with:
         image: njuana/tictactoe
-        registry: docker.io
+        registry: Docker.io
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
