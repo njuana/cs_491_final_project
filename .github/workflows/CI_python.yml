@@ -43,5 +43,5 @@ jobs:
         image: njuana/cs491_proj_final
         registry: docker.io
         dockerfile: Dockerfile.ci
-        username: ${{ DOCKER_USERNAME }}
-        password: ${{ DOCKER_PASSWORD }}
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
