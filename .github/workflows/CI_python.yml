@@ -41,8 +41,7 @@ jobs:
       name: Build & push Docker image
       with:
         image: njuana/cs491_proj_final
-        tags: v1, latest
-        registry: registry-url.io
+        registry: docker.io
         dockerfile: Dockerfile.ci
         username: ${{ DOCKER_USERNAME }}
         password: ${{ DOCKER_PASSWORD }}
